@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Music Website</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="floating-icons">
+  <img src="https://img.icons8.com/color/96/musical-notes.png" class="icon floating delay1" />
+  <img src="https://img.icons8.com/color/96/guitar.png" class="icon floating delay2" />
+  <img src="https://img.icons8.com/color/96/drum.png" class="icon floating delay3" />
+  <img src="https://img.icons8.com/color/96/trumpet.png" class="icon floating delay4" />
+  <img src="https://img.icons8.com/color/96/violin.png" class="icon floating delay5" />
+  <img src="https://img.icons8.com/color/96/piano.png" class="icon floating delay6" />
+  <img src="https://img.icons8.com/color/96/saxophone.png" class="icon floating delay7" />
+  <img src="https://img.icons8.com/color/96/xylophone.png" class="icon floating delay8" />
+</div>
+
+
+
+  <div class="animated-bg"></div>
+
+  <div class="container">
+    <h1>🎵 Welcome to Lohith's Music Zone 🎵</h1>
+
+    <input type="text" id="searchInput" placeholder="Search songs..." onkeyup="searchSongs()" />
+
+    <div id="noResult" style="display:none;">❌ No songs found</div>
+    
+    <div class="section" id="kannada">
+  <h2 onclick="toggleSection('kannada')">🎶 Kannada Songs ⬇️</h2>
+  <div class="songs-list">
+
+    <!-- Kariya 2 -->
+    <h3 class="movie-name" onclick="toggleMovie('kariya2')">🎬 Kariya 2 ⬇️</h3>
+    <div class="movie-songs" id="kariya2">
+      <div class="song" data-name="kannada naa kayutiruve sonu nigam kariya 2">
+        <a href="songs/3126.mp3" download>1. Naa Kayutiruve – Sonu Nigam</a>
+      </div>
+      <div class="song" data-name="kannada malegalada kariya 2">
+        <a href="songs/3128.mp3" download>2. Malegalada</a>
+      </div>
+      <div class="song" data-name="kannada kariya bartavne kariya 2">
+        <a href="songs/3127.mp3" download>3. Kariya Bartavne</a>
+      </div>
+      <div class="song" data-name="kannada anumanave illa kariya 2">
+        <a href="songs/3125.mp3" download>4. Anumanave Illa</a>
+      </div>
+    </div>
+
+    <!-- Andondittu Kaala -->
+    <h3 class="movie-name" onclick="toggleMovie('andondittu')">🎬 Andondittu Kaala ⬇️</h3>
+    <div class="movie-songs" id="andondittu">
+      <div class="song" data-name="kannada mungaru maleyalli sid sriram andondittu kaala">
+        <a href="songs/Mungaru Maleyalli-(SambalpuriStar.In).mp3" download>1. Mungaru Maleyalli – Sid Sriram</a>
+      </div>
+    </div>
+
+    <!-- Bhageera -->
+    <h3 class="movie-name" onclick="toggleMovie('bhageera')">🎬 Bhageera ⬇️</h3>
+    <div class="movie-songs" id="bhageera">
+      <div class="song" data-name="kannada rudhira dhaara bhageera">
+        <a href="songs/Rudhira Dhaara-(SambalpuriStar.In).mp3" download>1. Rudhira Dhaara</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+    <div class="section" id="hindi">
+      <h2 onclick="toggleSection('hindi')">🎶 Hindi Songs ⬇️</h2>
+      <div class="songs-list">
+        <div class="song" data-name="hindi sample"><a href="songs/sample-hindi.mp3" download>Download Hindi Sample Song</a></div>
+      </div>
+    </div>
+
+    <div class="section" id="tamil">
+      <h2 onclick="toggleSection('tamil')">🎶 Tamil Songs ⬇️</h2>
+      <div class="songs-list">
+        <div class="song" data-name="tamil sample"><a href="songs/sample-tamil.mp3" download>Download Tamil Sample Song</a></div>
+      </div>
+    </div>
+
+    <div class="section" id="telugu">
+      <h2 onclick="toggleSection('telugu')">🎶 Telugu Songs ⬇️</h2>
+      <div class="songs-list">
+        <div class="song" data-name="telugu sample"><a href="songs/sample-telugu.mp3" download>Download Telugu Sample Song</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function searchSongs() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const songs = document.querySelectorAll('.song');
+      let found = false;
+
+      songs.forEach(song => {
+        const name = song.getAttribute('data-name').toLowerCase();
+        if (name.includes(input)) {
+          song.style.display = 'block';
+          found = true;
+        } else {
+          song.style.display = 'none';
+        }
+      });
+
+      document.getElementById('noResult').style.display = found ? 'none' : 'block';
+    }
+
+    function toggleSection(id) {
+      const list = document.querySelector(`#${id} .songs-list`);
+      list.style.display = list.style.display === 'none' || list.style.display === '' ? 'block' : 'none';
+    }
+
+    // Collapse all sections initially
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('.songs-list').forEach(list => {
+        list.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
